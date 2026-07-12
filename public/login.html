@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>web-tty</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<main class="login-screen">
+  <div class="login-panel">
+    <div class="boot-log" id="boot-log" aria-hidden="true"></div>
+
+    <div class="prompt-line">
+      <span class="prompt-user">guest@web-tty:~$</span>
+      <form class="prompt-form" method="POST" action="/login" id="login-form" autocomplete="off">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="enter password"
+          autofocus
+          required
+        />
+        <button type="submit" aria-label="submit">&#8629;</button>
+      </form>
+    </div>
+
+    <div class="login-error" id="login-error" role="alert"></div>
+    <p class="login-hint">A real shell on the host is one correct password away from anyone who reaches this page. Keep it behind a strong, unique password and don't expose it to the open internet without a VPN, SSH tunnel, or reverse-proxy auth in front of it.</p>
+  </div>
+</main>
+
+<script>
+  const lines = [
+    '[ OK ] mounting /dev/pty0',
+    '[ OK ] starting session broker',
+    '[ OK ] mapping keyboard: us',
+    '[ OK ] uplink to host: nominal',
+    'web-tty ready. authentication required.',
+  ];
+
+  const log = document.getElementById('boot-log');
+  lines.forEach((line, i) => {
+    const div = document.createElement('div');
+    div.textContent = line;
+    div.style.animationDelay = `${i * 90}ms`;
+    log.appendChild(div);
+  });
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('error')) {
+    document.getElementById('login-error').textContent = 'access denied \u2014 wrong password.';
+  }
+</script>
+</body>
+</html>

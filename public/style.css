@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  --bg: #0a0908;
+  --bg-panel: #14120e;
+  --border: #2a241a;
+  --text: #e8e2d5;
+  --text-dim: #8f8873;
+  --amber: #f2a541;
+  --amber-dim: #8a5f22;
+  --green: #6fbf73;
+  --red: #e8564a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: var(--amber-dim);
+  color: var(--bg);
+}
+
+a {
+  color: var(--amber);
+}
+
+/* Visible keyboard focus everywhere, including the terminal's hidden textarea */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Login page                                                              */
+/* ---------------------------------------------------------------------- */
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 560px;
+}
+
+.boot-log {
+  white-space: pre-wrap;
+  color: var(--text-dim);
+  min-height: 132px;
+  margin-bottom: 8px;
+}
+
+.boot-log .ok {
+  color: var(--green);
+}
+
+.prompt-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.boot-log div {
+  opacity: 0;
+  animation: reveal 0.15s ease forwards;
+}
+
+@keyframes reveal {
+  to { opacity: 1; }
+}
+
+.prompt-user {
+  color: var(--amber);
+  white-space: nowrap;
+}
+
+.prompt-form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 6px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+.prompt-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  caret-color: var(--amber);
+  padding: 2px 0;
+}
+
+.prompt-form input:focus {
+  outline: none;
+}
+
+.prompt-form button {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font: inherit;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+.prompt-form button:hover,
+.prompt-form button:focus-visible {
+  color: var(--amber);
+}
+
+.login-error {
+  color: var(--red);
+  margin-top: 14px;
+  min-height: 1.4em;
+}
+
+.login-hint {
+  color: var(--text-dim);
+  margin-top: 40px;
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Terminal app page                                                       */
+/* ---------------------------------------------------------------------- */
+
+.app-shell {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.topbar .brand {
+  color: var(--amber);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.status-dot.connected { background: var(--green); }
+.status-dot.disconnected { background: var(--red); }
+
+.status-text {
+  color: var(--text-dim);
+}
+
+.topbar .spacer {
+  flex: 1;
+}
+
+.topbar button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.topbar button:hover,
+.topbar button:focus-visible {
+  color: var(--amber);
+  border-color: var(--amber-dim);
+}
+
+#terminal-container {
+  flex: 1;
+  min-height: 0;
+  padding: 8px;
+}
+
+#terminal {
+  height: 100%;
+}

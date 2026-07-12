@@ -1,0 +1,12 @@
+services:
+  web-tty:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      TTY_PASSWORD: ${TTY_PASSWORD:?set TTY_PASSWORD in your .env file}
+    # Uncomment to give the container shell access to the host filesystem.
+    # Be deliberate about this - it widens what a compromised session can reach.
+    # volumes:
+    #   - /home/youruser:/home/youruser
+    restart: unless-stopped
