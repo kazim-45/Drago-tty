@@ -62,8 +62,8 @@ you'll also need a C++ toolchain:
   Visual Studio Build Tools, or run this inside WSL instead.
 
 ```bash
-git clone <your-fork-url> web-tty
-cd web-tty
+git clone https://github.com/kazim-45/Drago-tty.git
+cd Drago-tty
 cp .env.example .env
 # edit .env and set TTY_PASSWORD to something long and random
 npm install
