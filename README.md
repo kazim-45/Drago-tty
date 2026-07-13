@@ -65,7 +65,7 @@ you'll also need a C++ toolchain:
 git clone https://github.com/kazim-45/Drago-tty.git
 cd Drago-tty
 cp .env.example .env
-# edit .env and set TTY_PASSWORD to something long and random
+nano .env # edit .env and set TTY_PASSWORD to something long and random
 npm install
 npm start
 ```
