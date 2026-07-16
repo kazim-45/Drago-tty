@@ -108,5 +108,5 @@ Ideas if you want to take this further:
 
 ## License
 
-MIT — do whatever you want with it, just keep the security warnings in mind
+MIT - do whatever you want with it, just keep the security warnings in mind
 for anyone else who ends up running it.
